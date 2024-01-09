@@ -56,3 +56,20 @@ function(req, res, next) {
 previously app.use(middleware()) method applied to mount middleware function at root level (where function executed for all requests). You can set more specific condition eg. app.post/get/delete/put(middleware())
 
 You can get the request method (http verb), the relative route path, and the caller’s ip from the request object using req.method, req.path and req.ip
+
+## Chain Middleware to Create a Time Server
+
+Middleware can be mounted at a specific route using app.METHOD(path, middlewareFunction).
+Middleware can also be chained within a route definition - example:
+app.get('/user', function(req, res, next) {
+  req.user = getTheUserSync();  // Hypothetical synchronous operation
+  next();
+}, function(req, res) {
+  res.send(req.user);
+});
+useful for:
+splitting the server operations into smaller units,
+better app structure,
+reuse code in different places,
+can also be used to perform some validation on the data.
+At each point of the middleware stack you can block the execution of the current chain and pass control to functions specifically designed to handle errors. Or you can pass control to the next matching route, to handle special cases.
