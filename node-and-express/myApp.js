@@ -15,6 +15,12 @@ let app = express(); //create an Express app object
 // access static asset styles.css with middleware
 app.use('/public', express.static(__dirname + '/public'));
 //----------
+//Implement a Root-Level Request Logger Middleware
+app.use('/', function (req, res, next) {
+	console.log(`${req.method} ${req.path} - ${req.ip}`);
+	next();
+});
+//----------
 //create simple API route
 app.get('/json', function (req, res) {
 	process.env.MESSAGE_STYLE === 'uppercase'
