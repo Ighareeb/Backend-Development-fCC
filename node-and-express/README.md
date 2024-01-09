@@ -29,7 +29,7 @@ eg. absolutePath = __dirname + '/relativePath/file.ext'
 
 In Express, you can put in place this functionality using the middleware express.static(path), where the path parameter is the absolute path of the folder containing the assets.
 Middleware are functions that intercept route handlers, adding some kind of information.
-A middleware needs to be mounted using the method app.use(path, middlewareFunction). The first path argument is optional. If you don’t pass it, the middleware will be executed for all requests.
+A middleware needs to be mounted eg. using the method app.use(path, middlewareFunction). The first path argument is optional. If you don’t pass it, the middleware will be executed for all requests.
 
 ## HTML server serves HTML, an API serves data
 
@@ -94,3 +94,31 @@ If you use the API from JavaScript, you can use specific methods to encode/decod
 route_path: '/library'
 actual_request_URL: '/library?userId=546&bookId=6754'
 req.query: {userId: '546', bookId: '6754'}
+
+## Use body-parser to Parse POST Requests
+
+POST is the default method used to send client data with HTML forms. In REST convention, POST is used to send data to create new items in the database (a new user, or a new blog post)
+POST req data doesn’t appear in the URL, it is hidden in the request body. The body is a part of the HTTP request, also called the payload.
+Even though the data is not visible in the URL, this does not mean that it is private.
+raw content of an HTTP POST request:
+
+POST /path/subpath HTTP/1.0
+From: <john@example.com>
+User-Agent: someBrowser/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 20
+
+name=John+Doe&age=25
+
+The body is encoded like the query string.
+This is the default format used by HTML forms.
+With Ajax, you can also use JSON to handle data having a more complex structure.
+There is also another type of encoding: multipart/form-data. This one is used to upload binary files.
+When using a URL encoded body - To parse the data coming from POST requests, you must use the body-parser package. This package allows you to use a series of middleware, which can decode data in different formats.
+let bodyParser = require('body-parser');
+The middleware to handle URL encoded data is returned by bodyParser.urlencoded({extended: false})
+Note: extended is a configuration option that tells body-parser which parsing needs to be used. When extended=false it uses the classic encoding querystring library. When extended=true it uses qs library for parsing.
+When using extended=false, values can be only strings or arrays. The object returned when using querystring does not prototypically inherit from the default JavaScript Object, which means functions like hasOwnProperty, toString will not be available.
+The extended version allows more data flexibility, but it is outmatched by JSON.
+
+## Get Data from POST Requests
