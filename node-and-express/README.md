@@ -73,3 +73,13 @@ better app structure,
 reuse code in different places,
 can also be used to perform some validation on the data.
 At each point of the middleware stack you can block the execution of the current chain and pass control to functions specifically designed to handle errors. Or you can pass control to the next matching route, to handle special cases.
+
+## Get Route Parameter Input from the Client
+
+When building an API, we have to allow users to communicate to us what they want to get from our service (example, if the client is requesting information about a user stored in the database, they need a way to let us know which user they're interested in).
+One possible way to achieve this result is by using route parameters.
+Route parameters are named segments of the URL, delimited by slashes (/). Each segment captures the value of the part of the URL which matches its position. The captured values can be found in the req.params object.
+
+route_path: '/user/:userId/book/:bookId'
+actual_request_URL: '/user/546/book/6754'
+req.params: {userId: '546', bookId: '6754'}

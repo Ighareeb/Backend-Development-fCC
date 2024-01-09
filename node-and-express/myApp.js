@@ -38,4 +38,8 @@ app.get(
 		res.send({ time: req.time });
 	},
 );
+//Get Route Parameter Input from the Client
+app.get('/:word/echo', function (req, res) {
+	res.send({ echo: req.params.word });
+});
 module.exports = app;
