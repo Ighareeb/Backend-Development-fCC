@@ -122,3 +122,10 @@ When using extended=false, values can be only strings or arrays. The object retu
 The extended version allows more data flexibility, but it is outmatched by JSON.
 
 ## Get Data from POST Requests
+
+ If the body-parser is configured correctly, you should find the parameters in the object req.body.
+ library example:
+
+route: POST '/library'
+urlencoded_body: userId=546&bookId=6754
+req.body: {userId: '546', bookId: '6754'}

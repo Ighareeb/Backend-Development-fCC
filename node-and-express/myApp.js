@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 });
 //----------
 // access static asset styles.css with middleware
-// app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 // //----------
 // //Implement a Root-Level Request Logger Middleware
 // app.use('/', function (req, res, next) {
@@ -47,14 +47,17 @@ app.get('/', function (req, res) {
 //Use body-parser to Parse POST Requests (needs to be before the route it depends on i.e. /name)
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// //Get Query Parameter Input from the Client (http://localhost:3000/name?first=Islam&last=Ghareeb)
+// //Get Query Parameter Input from the Client
 app.get('/name', function (req, res) {
 	let firstName = req.query.first;
 	let lastName = req.query.last;
 	res.json({ name: `${firstName} ${lastName}` });
 });
-// app.post('/some-route', function (req, res) {
-// 	console.log(req.body);
-// });
-
+//Get Data from POST Requests. (change to app.post and req.body instead of req.query)
+//check network.payload in dev tools to see the POST data
+app.post('/name', function (req, res) {
+	let firstName = req.body.first;
+	let lastName = req.body.last;
+	res.json({ name: `${firstName} ${lastName}` });
+});
 module.exports = app;
