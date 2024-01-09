@@ -1,4 +1,5 @@
-package.json NOTES:
+# package.json NOTES
+
 There are only two required fields; name and version for your package.json file.
 Version describes the current version of your project. It follows semantic versioning (SemVer) format: major.minor.patch
 Major: Significant changes that might break compatibility.
@@ -11,3 +12,11 @@ The MAJOR version should increment when you make incompatible API changes. The M
 The license field is where you inform users of what they are allowed to do with your project.
 Permissive licenses: Allow users to do virtually anything with the software, including incorporating it into closed-source commercial products, without requiring them to share their modifications with the original project. Popular permissive licenses include the MIT License, the Apache License, and the BSD License.
 Copyleft licenses: Require that any derivative works created from the original software must also be released under the same license. Ensures that the source code remains open and that any improvements made to the software are shared with the community. The most well-known copyleft license is the GNU General Public License (GPL).
+======================================================================================================================
+
+Node and Express NOTES:
+
+- Node.js is a JavaScript runtime that allows developers to write backend (server-side) programs in JavaScript.
+Has some built in modules eg. HTTP (acts like a server), File System (read & modify files)
+
+- Express is a lightweight web application framework. Makes creating server and handling routing for app easier.
