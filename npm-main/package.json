@@ -11,5 +11,13 @@
 		"type": "git",
 		"url": "https://github.com/freeCodeCamp/boilerplate-npm.git"
 	},
-	"author": "Islam Ghareeb"
+	"author": "Islam Ghareeb",
+	"description": "fCC Managing packages with npm course",
+	"keywords": [
+		"freecodecamp",
+		"npm",
+		"managing packages"
+	],
+	"license": "MIT",
+	"version": "1.0.0"
 }
