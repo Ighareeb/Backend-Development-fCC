@@ -28,3 +28,10 @@ A middleware needs to be mounted using the method app.use(path, middlewareFuncti
 
 --HTML server serves HTML, an API serves data.
 A REST (REpresentational State Transfer) API allows data exchange in a simple way, without the need for clients to know any detail about the server. The client only needs to know where the resource is (the URL), and the action it wants to perform on it (the verb). The GET verb is used when you are fetching some information, without modifying anything. Preferred data format for moving information around the web is JSON.
+
+Create a simple API by creating a route that responds with JSON at the path  eg. /json. You can do it as usual, with the app.get() method. Inside the route handler, use the method res.json(), passing in an object as an argument.
+This method closes the request-response loop, returning the data. Behind the scenes, it converts a valid JavaScript object into a string, then sets the appropriate headers to tell your browser that you are serving JSON, and sends the data back. A valid object has the usual structure {key: data}. data can be a number, a string, a nested object or an array. data can also be a variable or the result of a function call, in which case it will be evaluated before being converted into a string.
+
+---------
+.env file in the root of your project directory - environment variable as a configuration option.
+need to use dotenv package to load environment variables from your .env file into process.env -->add require('dotenv').config() to load the environment variables.
