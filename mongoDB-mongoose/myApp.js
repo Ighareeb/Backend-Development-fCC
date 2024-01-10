@@ -87,13 +87,15 @@ const removeById = (personId, done) => {
 		done(null, data);
 	});
 };
-
+//Delete Many Documents with model.remove()
 const removeManyPeople = (done) => {
 	const nameToRemove = 'Mary';
-
-	done(null /*, data*/);
+	Person.remove({ name: nameToRemove }, function (err, data) {
+		if (err) return console.error(err);
+		done(null, data);
+	});
 };
-
+//Chain Search Query Helpers to Narrow Search Results
 const queryChain = (done) => {
 	const foodToSearch = 'burrito';
 

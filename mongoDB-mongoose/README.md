@@ -70,6 +70,10 @@ It is similar to the previous update method, but it does not send back the updat
 
 Note: You should return the updated document. To do that, you need to pass the options document { new: true } as the 3rd argument to findOneAndUpdate(). By default, these methods return the unmodified object.
 
-### Delete One Document Using model.findByIdAndRemove or findOneAndRemove()
+### Delete One Document Using model.findByIdAndRemove or findOneAndRemove() / Delete Many Documents with model.remove()
 
 findByIdAndRemove and findOneAndRemove are like the previous update methods. They pass the removed document to the db. As usual, use the function argument personId as the search key.
+
+Model.remove() is useful to delete all the documents matching given criteria.
+
+## Chain Search Query Helpers to Narrow Search Results
