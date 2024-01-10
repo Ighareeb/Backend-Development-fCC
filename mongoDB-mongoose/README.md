@@ -65,6 +65,11 @@ Mongoose has a dedicated updating method: Model.update(). It is bound to the low
 
 ### Perform New Updates on a Document Using model.findOneAndUpdate()
 
-Mongoose has a dedicated updating method: Model.findOneAndUpdate(). It is similar to the previous update method, but it does not send back the updated document, only a 'status' message. It is also bound to the low-level mongo driver, so it does not trigger mongoose middleware.
+Mongoose has a dedicated updating method: Model.findOneAndUpdate().
+It is similar to the previous update method, but it does not send back the updated document, only a 'status' message. It is also bound to the low-level mongo driver, so it does not trigger mongoose middleware.
 
 Note: You should return the updated document. To do that, you need to pass the options document { new: true } as the 3rd argument to findOneAndUpdate(). By default, these methods return the unmodified object.
+
+### Delete One Document Using model.findByIdAndRemove or findOneAndRemove()
+
+findByIdAndRemove and findOneAndRemove are like the previous update methods. They pass the removed document to the db. As usual, use the function argument personId as the search key.
