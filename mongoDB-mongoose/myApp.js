@@ -13,10 +13,20 @@ let personSchema = new mongoose.Schema({
 //create Person model from the schema
 const Person = mongoose.model('Person', personSchema);
 
+//Create and Save a Record of a Model
+//create a document instance using the Person model constructor
 const createAndSavePerson = (done) => {
-	done(null /*, data*/);
+	const islam = new Person({
+		name: 'Islam',
+		age: 38,
+		favoriteFoods: ['beans', 'oatmeal', 'spinach'],
+	});
+	islam.save(function (err, data) {
+		if (err) return console.error(err);
+		done(null, data);
+	});
 };
-
+//Create Many Records
 const createManyPeople = (arrayOfPeople, done) => {
 	done(null /*, data*/);
 };

@@ -38,3 +38,10 @@ const someFunc = function(done) {
   done(null, result);
 };
 ```
+
+## Create and Save a Record of a Model
+
+Create a document instance using the Person model constructor. Pass to the constructor an object having the schema fields. Their types must conform to the ones in the Schema.
+Then, call the method document.save() on the returned document instance. Pass to it a callback using the Node convention. This is a common pattern; all the following CRUD methods take a callback function like this as the last argument.
+**Create Many Records with model.create()
+create many instances of your models, e.g. when seeding a database with initial data. Model.create() takes an array of objects like [{name: 'John', ...}, {...}, ...] as the first argument, and saves them all in the db.
