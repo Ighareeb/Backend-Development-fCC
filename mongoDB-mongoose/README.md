@@ -77,3 +77,8 @@ findByIdAndRemove and findOneAndRemove are like the previous update methods. The
 Model.remove() is useful to delete all the documents matching given criteria.
 
 ## Chain Search Query Helpers to Narrow Search Results
+
+If you don’t pass the callback as the last argument to Model.find() (or to the other search methods), the query is not executed. You can store the query in a variable for later use.
+This kind of object enables you to build up a query using chaining syntax.
+The actual db search is executed when you finally chain the method .exec().
+You always need to pass your callback to this last method.

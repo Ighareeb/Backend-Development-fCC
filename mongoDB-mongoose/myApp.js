@@ -98,8 +98,15 @@ const removeManyPeople = (done) => {
 //Chain Search Query Helpers to Narrow Search Results
 const queryChain = (done) => {
 	const foodToSearch = 'burrito';
-
-	done(null /*, data*/);
+	Person.find({ favoriteFoods: foodToSearch })
+		.sort({ name: 1 }) //sorts the results in ascending order by name
+		.limit(2) //limits the results to the first 2 documents.
+		.select({ age: 0 }) // excludes the age field from the results.
+		//execute the query and passes the results to the callback function.
+		.exec(function (err, data) {
+			if (err) return console.error(err);
+			done(null, data);
+		});
 };
 
 /** **Well Done !!**
