@@ -1,5 +1,6 @@
 # MongoDB and Mongoose NOTES
 
+<https://mongoosejs.com/>
 <https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/>
 MongoDB is a database application that stores JSON documents (or records) that you can use in your application.
 Unlike SQL, another type of database, MongoDB is a non-relational or "NoSQL" database. This means MongoDB stores all associated data within one record, instead of storing it across many preset tables as in a SQL database.
@@ -49,7 +50,17 @@ create many instances of your models, e.g. when seeding a database with initial 
 ## Use model.find() to Search Your Database
 
 (In its simplest usage), <ModelName.find()> accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options.
-**Use modelName.findOne() to Return a Single Matching Document from Your Database
+
+### Use modelName.findOne() to Return a Single Matching Document from Your Database
+
 behaves like Model.find(), but it returns only one document i.e. 'object' (not an array), even if there are multiple items. It is especially useful when searching by properties that you have declared as unique.
-**Use model.findById() to Search Your Database By _id
-When saving a document, MongoDB automatically adds the field_id, and set it to a unique alphanumeric key. Searching by _id is an extremely frequent operation, so Mongoose provides a dedicated method for it.
+
+### Use model.findById() to Search Your Database By _id
+
+When saving a document, MongoDB automatically adds the field_id, and set it to a unique alphanumeric key. Searching by (_id) is an extremely frequent operation, so Mongoose provides a dedicated method for it.
+
+## Perform Classic Updates by Running Find, Edit, then Save
+
+Mongoose has a dedicated updating method: Model.update(). It is bound to the low-level mongo driver. It can bulk-edit many documents matching certain criteria, but it doesn’t send back the updated document, only a 'status' message. Furthermore, it makes model validations difficult, because it just directly calls the mongo driver
+
+### Perform New Updates on a Document Using model.findOneAndUpdate()
