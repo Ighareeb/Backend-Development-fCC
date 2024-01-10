@@ -27,6 +27,13 @@ app.get('/', function (req, res) {
 const isInvalidDate = (date) => {
 	return date.toUTCString() === 'Invalid Date';
 };
+//for empty date parameter - return current time
+app.get('/api', (req, res) => {
+	res.json({
+		unix: new Date().getTime(),
+		utc: new Date().toUTCString(),
+	});
+});
 // using /api/:date? endpoint
 app.get('/api/:date?', (req, res) => {
 	let date = new Date(req.params.date);
@@ -41,13 +48,6 @@ app.get('/api/:date?', (req, res) => {
 	res.json({
 		unix: date.getTime(),
 		utc: date.toUTCString(),
-	});
-});
-//for empty date parameter - return current time
-app.get('/api', (req, res) => {
-	res.json({
-		unix: new Date().getTime(),
-		utc: new Date().toUTCString(),
 	});
 });
 
