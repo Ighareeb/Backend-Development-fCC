@@ -45,3 +45,7 @@ Create a document instance using the Person model constructor. Pass to the const
 Then, call the method document.save() on the returned document instance. Pass to it a callback using the Node convention. This is a common pattern; all the following CRUD methods take a callback function like this as the last argument.
 **Create Many Records with model.create()
 create many instances of your models, e.g. when seeding a database with initial data. Model.create() takes an array of objects like [{name: 'John', ...}, {...}, ...] as the first argument, and saves them all in the db.
+
+## Use model.find() to Search Your Database
+
+(In its simplest usage), <ModelName.find()> accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options.
