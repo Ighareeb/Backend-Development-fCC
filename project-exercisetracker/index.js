@@ -17,7 +17,7 @@ const ExerciseSchema = new Schema({
 	user_id: { type: String, required: true },
 	description: String,
 	duration: Number,
-	data: Date,
+	date: Date,
 });
 const Exercise = mongoose.model('Exercise', ExerciseSchema);
 app.use(cors());
@@ -36,7 +36,7 @@ app.get('/api/users', async (req, res) => {
 	}
 });
 
-app.get('/api/users', async (req, res) => {
+app.post('/api/users', async (req, res) => {
 	const userObj = new User({ username: req.body.username });
 	try {
 		const user = await userObj.save();
@@ -110,7 +110,7 @@ app.get('/api/users/:_id/logs', async (req, res) => {
 		date: new Date(e.data).toDateString(),
 	}));
 	//response format object
-	res.josn({
+	res.json({
 		username: user.username,
 		count: exercises.length,
 		_id: user._id,
