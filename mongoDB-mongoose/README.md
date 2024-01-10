@@ -64,3 +64,7 @@ When saving a document, MongoDB automatically adds the field_id, and set it to a
 Mongoose has a dedicated updating method: Model.update(). It is bound to the low-level mongo driver. It can bulk-edit many documents matching certain criteria, but it doesn’t send back the updated document, only a 'status' message. Furthermore, it makes model validations difficult, because it just directly calls the mongo driver
 
 ### Perform New Updates on a Document Using model.findOneAndUpdate()
+
+Mongoose has a dedicated updating method: Model.findOneAndUpdate(). It is similar to the previous update method, but it does not send back the updated document, only a 'status' message. It is also bound to the low-level mongo driver, so it does not trigger mongoose middleware.
+
+Note: You should return the updated document. To do that, you need to pass the options document { new: true } as the 3rd argument to findOneAndUpdate(). By default, these methods return the unmodified object.
