@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
 
 //function to check the date query
 const isInvalidDate = (date) => {
-	date.toUTCString() === 'Invalid Date';
+	return date.toUTCString() === 'Invalid Date';
 };
 // using /api/:date? endpoint
 app.get('/api/:date?', (req, res) => {
