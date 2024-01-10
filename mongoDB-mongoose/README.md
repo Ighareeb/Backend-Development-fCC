@@ -49,3 +49,7 @@ create many instances of your models, e.g. when seeding a database with initial 
 ## Use model.find() to Search Your Database
 
 (In its simplest usage), <ModelName.find()> accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options.
+**Use modelName.findOne() to Return a Single Matching Document from Your Database
+behaves like Model.find(), but it returns only one document i.e. 'object' (not an array), even if there are multiple items. It is especially useful when searching by properties that you have declared as unique.
+**Use model.findById() to Search Your Database By _id
+When saving a document, MongoDB automatically adds the field_id, and set it to a unique alphanumeric key. Searching by _id is an extremely frequent operation, so Mongoose provides a dedicated method for it.
