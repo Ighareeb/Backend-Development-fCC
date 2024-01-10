@@ -1,5 +1,14 @@
 # Node & Express
 
+Express is a node js web application framework that provides broad features for building web and mobile applications. It is used to build a single page, multipage, and hybrid web application.
+It's a layer built on the top of the Node js that helps manage servers and routes.
+Express was created to make APIs and web applications with ease,
+It saves a lot of coding time almost by half and still makes web and
+mobile applications are efficient.
+Another reason for using express is that it is written in javascript
+The reason behind creating an express framework for node js is:
+Time-efficient, Fast, Economical, Easy to learn, Asynchronous
+
 ## Express object has several methods
 
 One fundamental method is app.listen(port)-> tells your server to listen on a given port, putting it in running state.
