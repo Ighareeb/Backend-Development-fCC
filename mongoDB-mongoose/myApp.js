@@ -4,8 +4,14 @@ mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
-
-let Person;
+//create/define schema
+let personSchema = new mongoose.Schema({
+	name: String,
+	age: Number,
+	favoriteFoods: [String],
+});
+//create Person model from the schema
+const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
 	done(null /*, data*/);

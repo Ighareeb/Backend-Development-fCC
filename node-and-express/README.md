@@ -11,9 +11,12 @@ METHOD is an http method in lowercase (eg. get, put, post, delete).
 PATH is a relative path on the server (it can be a string, or even a regular expression).
 HANDLER is a function that Express calls when the route is matched. Handlers take the form function(req, res) {...}, where req is the request object, and res is the response object. For example, the handler
 
+```js
 function(req, res) {
   res.send('Response String');
 }
+```
+
 will serve the string 'Response String'.
 
 ## You can respond to requests with a file using the res.sendFile(path) method
@@ -49,10 +52,14 @@ Middleware functions are functions that take 3 arguments: the request object, th
 These functions execute some code that can have side effects on the app, and usually add information to the request or response objects.
 They can also end the cycle by sending a response when some condition is met.
 If they don’t send the response when they are done, they start the execution of the next function in the stack. This triggers calling the 3rd argument, next() - example:
+
+```js
 function(req, res, next) {
   console.log("I'm a middleware...");
   next();
 }
+```
+
 previously app.use(middleware()) method applied to mount middleware function at root level (where function executed for all requests). You can set more specific condition eg. app.post/get/delete/put(middleware())
 
 You can get the request method (http verb), the relative route path, and the caller’s ip from the request object using req.method, req.path and req.ip
@@ -61,12 +68,16 @@ You can get the request method (http verb), the relative route path, and the cal
 
 Middleware can be mounted at a specific route using app.METHOD(path, middlewareFunction).
 Middleware can also be chained within a route definition - example:
+
+```js
 app.get('/user', function(req, res, next) {
   req.user = getTheUserSync();  // Hypothetical synchronous operation
   next();
 }, function(req, res) {
   res.send(req.user);
 });
+```
+
 useful for:
 splitting the server operations into smaller units,
 better app structure,
@@ -80,9 +91,11 @@ When building an API, we have to allow users to communicate to us what they want
 One possible way to achieve this result is by using route parameters.
 Route parameters are named segments of the URL, delimited by slashes (/). Each segment captures the value of the part of the URL which matches its position. The captured values can be found in the req.params object.
 
+```js
 route_path: '/user/:userId/book/:bookId'
 actual_request_URL: '/user/546/book/6754'
 req.params: {userId: '546', bookId: '6754'}
+```
 
 ## Get Query Parameter Input from the Client
 
@@ -91,9 +104,11 @@ The query string is delimited by a question mark (?), and includes field=value c
 (Some characters, like the percent (%), cannot be in URLs and have to be encoded in a different format before you can send them.)
 If you use the API from JavaScript, you can use specific methods to encode/decode these characters.
 
+```js
 route_path: '/library'
 actual_request_URL: '/library?userId=546&bookId=6754'
 req.query: {userId: '546', bookId: '6754'}
+```
 
 ## Use body-parser to Parse POST Requests
 
