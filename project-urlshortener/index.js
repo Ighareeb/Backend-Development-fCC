@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const { MongoClient } = require('mongodb');
-const client = new MongoClient(process.env.MONGO_URI);
+const client = new MongoClient(process.env.DB_URL);
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
