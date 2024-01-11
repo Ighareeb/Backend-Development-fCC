@@ -5,7 +5,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.DB_URL);
 
 //create schemas & instantiate models
 const UserSchema = new Schema({
