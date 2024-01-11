@@ -1,3 +1,4 @@
+//to work add .env setting for mongoose.connect()
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -7,7 +8,7 @@ const validator = require('validator');
 const mongoose = require('mongoose');
 const internal = require('stream');
 mongoose.connect(
-	'mongodb+srv://virtualig:yXDqxIpevVCnAmw6@cluster0.gfwteel.mongodb.net/urlshortner?retryWrites=true&w=majority',
+	'mongodb+srv://<username>:<password>@cluster0.gfwteel.mongodb.net/<collectiondbname?retryWrites=true&w=majority',
 );
 
 const Url = mongoose.model('Url', { original_url: String, short_url: Number });
